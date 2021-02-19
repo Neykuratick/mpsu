@@ -48,10 +48,10 @@ public class DynamicArray<T> {
 
     public void insertValue(int index, T value) {
         // makes new T[] array with one additional empty element
-        // extends old array with 1 empty element
         // copies all the values to that array until the given index
         // appends new value by inserting given value to the given index
         // appends the rest of the old array to the new array
+        // extends old array with 1 empty element
         // assigns new array to the old array
 
         T[] newArray;
