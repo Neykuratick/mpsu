@@ -12,6 +12,14 @@ public class DynamicArray<T> {
         this.size = size;
     }
 
+    public T getValue(int index) {
+        if (index >= 0) {
+            return data[index];
+        } else {
+            throw new RuntimeException("Wrong index");
+        }
+    }
+
     public int getLength() {
         return data.length;
     }
