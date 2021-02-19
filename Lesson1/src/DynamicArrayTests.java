@@ -34,7 +34,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage(DynamicArray.negativeArraySize);
+        thrown.expectMessage(DynamicArray.negativeArraySizeError);
 
         DynamicArray dArr = new DynamicArray(-1);
     }
@@ -109,7 +109,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage(DynamicArray.negativeArraySize);
+        thrown.expectMessage(DynamicArray.negativeArraySizeError);
 
         DynamicArray dArr = new DynamicArray();
         dArr.resize(-1);

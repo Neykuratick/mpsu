@@ -6,7 +6,8 @@ public class DynamicArray<T> {
 
     private int DEFAULT_SIZE = 5;
     public static String wrongIndexError = "Wrong index";
-    public static String negativeArraySize = "Size of the array must be over -1";
+    public static String negativeArraySizeError = "Size of the array must be over -1";
+    public static String noSuchElementError = "Value not found";
 
     public DynamicArray() {
         data = (T[]) new Object[DEFAULT_SIZE];
@@ -18,7 +19,7 @@ public class DynamicArray<T> {
             data = (T[]) new Object[size];
             this.size = size;
         } else {
-            throw new RuntimeException(negativeArraySize);
+            throw new RuntimeException(negativeArraySizeError);
         }
     }
 
@@ -35,7 +36,7 @@ public class DynamicArray<T> {
             this.data = Arrays.copyOf(data, newSize);
             this.size = newSize;
         } else {
-            throw new RuntimeException(negativeArraySize);
+            throw new RuntimeException(negativeArraySizeError);
         }
     }
 
@@ -49,5 +50,18 @@ public class DynamicArray<T> {
 
     public int getSize() {
         return data.length;
+    }
+
+    public int findFirst(T requiredElement) {
+        int counter = 0;
+
+        for (T element : this.data) {
+            if (element == requiredElement) {
+                return counter;
+            }
+            counter++;
+        }
+
+        throw  new RuntimeException(noSuchElementError);
     }
 }
