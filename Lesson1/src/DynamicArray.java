@@ -64,4 +64,22 @@ public class DynamicArray<T> {
 
         throw  new RuntimeException(noSuchElementError);
     }
+
+    public int findLast(T requiredElement) {
+        int counter = 0;
+        int rightIndex = -1;
+
+        for (T element : this.data) {
+            if (element == requiredElement) {
+                rightIndex = counter;
+            }
+            counter++;
+        }
+
+        if (rightIndex >= 0) {
+            return rightIndex;
+        } else {
+            throw  new RuntimeException(noSuchElementError);
+        }
+    }
 }

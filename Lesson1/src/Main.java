@@ -11,6 +11,7 @@ public class Main {
             System.out.println(dArr.getValue(i));
         }
 
-        System.out.println(dArr.findFirst("null"));
+        System.out.println(dArr.findFirst("garbage"));
+        System.out.println(dArr.findLast("garbage"));
     }
 }
