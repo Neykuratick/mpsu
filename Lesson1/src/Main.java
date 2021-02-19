@@ -3,6 +3,10 @@ public class Main {
         DynamicArray dArr = new DynamicArray(10);
 
         System.out.println(dArr.getLength());
-        System.out.println(dArr.getValue(-1));
+        dArr.setValue(1, 'h');
+        dArr.setValue(2, 1337);
+        System.out.println(dArr.getValue(1));
+        System.out.println(dArr.getValue(2));
+        System.out.println(dArr.getValue(3));
     }
 }
