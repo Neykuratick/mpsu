@@ -40,6 +40,12 @@ public class DynamicArray<T> {
         }
     }
 
+    public void addValue(T value) {
+        int oldLastIndex = this.size;
+        resize(this.size + 1);
+        setValue(oldLastIndex, value);
+    }
+
     public T getValue(int index) {
         if (index >= 0 && index < this.size) {
             return data[index];

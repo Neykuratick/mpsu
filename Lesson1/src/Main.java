@@ -11,7 +11,12 @@ public class Main {
             System.out.println(dArr.getValue(i));
         }
 
-        System.out.println(dArr.findFirst("garbage"));
-        System.out.println(dArr.findLast("garbage"));
+        System.out.println("\n");
+
+        dArr.addValue("1");
+
+        for (int i = 0; i < 10; i++ ) {
+            System.out.println(dArr.getValue(i));
+        }
     }
 }
