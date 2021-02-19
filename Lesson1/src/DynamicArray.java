@@ -56,7 +56,6 @@ public class DynamicArray<T> {
 
         T[] newArray;
         newArray = (T[]) new Object[this.size + 1];
-        this.size = this.size + 1;
 
         for (int i = 0; i < index; i++) {
             newArray[i] = getValue(i);
@@ -64,10 +63,11 @@ public class DynamicArray<T> {
 
         newArray[index] = value;
 
-        for (int i = index+1; i < this.size; i++) {
+        for (int i = index+1; i < newArray.length; i++) {
             newArray[i] = getValue(i-1);
         }
 
+        this.size = this.size + 1;
         this.data = newArray;
     }
 
@@ -89,6 +89,7 @@ public class DynamicArray<T> {
             newArray[i] = getValue(i+1);
         }
 
+        this.size = newArray.length;
         this.data = newArray;
     }
 

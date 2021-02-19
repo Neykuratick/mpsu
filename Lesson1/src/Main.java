@@ -12,15 +12,26 @@ public class Main {
             System.out.print(" ");
             System.out.println(dArr.getValue(i));
         }
+        System.out.println(dArr.getSize());
 
         System.out.println("Done\n");
 
-        dArr.removeValue(2);
-
+        dArr.insertValue(2, "before gotcha");
         for (int i = 0; i < dArr.getSize(); i++ ) {
             System.out.print(i);
             System.out.print(" ");
             System.out.println(dArr.getValue(i));
         }
+        System.out.println(dArr.getSize());
+
+        System.out.println("Done\n");
+
+        dArr.removeValue(2);
+        for (int i = 0; i < dArr.getSize(); i++ ) {
+            System.out.print(i);
+            System.out.print(" ");
+            System.out.println(dArr.getValue(i));
+        }
+        System.out.println(dArr.getSize());
     }
 }
