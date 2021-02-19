@@ -10,7 +10,7 @@ public class DynamicArray {
         data = new int[size];
     }
 
-    public int length() {
+    public int getLength() {
         return data.length;
     }
 }
