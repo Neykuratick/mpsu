@@ -47,7 +47,7 @@ public class DynamicArray<T> {
         }
     }
 
-    public int getLength() {
+    public int getSize() {
         return data.length;
     }
 }
