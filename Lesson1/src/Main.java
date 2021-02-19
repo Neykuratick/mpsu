@@ -15,7 +15,8 @@ public class Main {
 
         System.out.println("Done\n");
 
-        dArr.insertValue(2, "before gotcha");
+        dArr.removeValue(2);
+
         for (int i = 0; i < dArr.getSize(); i++ ) {
             System.out.print(i);
             System.out.print(" ");
