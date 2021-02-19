@@ -437,4 +437,109 @@ public class DynamicArrayTests extends Assert {
 
 
     //  -- removeValue tests --
+
+    @Test
+    public void removeValue_arraySize() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(2);
+        int actualValue = dArr.getSize();
+
+        assertEquals(5, actualValue);
+    }
+
+    @Test
+    public void removeValue_int_69420() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, 69420);
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(2);
+        Object actualValue = dArr.getValue(2);
+
+        assertEquals(2, actualValue);
+    }
+
+    @Test
+    public void removeValue_NegativeIndex() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(-1);
+    }
+
+    @Test
+    public void removeValue_IndexGreaterArrayLength() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray(10);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(11);
+    }
+
+    @Test
+    public void removeValue_IndexEqualsArrayLength() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray(10);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(10);
+    }
+
+    @Test
+    public void removeValue_removedElementIndex() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.noSuchElementError);
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(2);
+        int actualValue = dArr.findFirst(69420);
+    }
+
+    //  -- /removeValue tests --
 }

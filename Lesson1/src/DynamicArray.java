@@ -82,6 +82,10 @@ public class DynamicArray<T> {
         // appends the rest of the old array to the new array
         // assigns new array to the old array
 
+        if (index >= data.length || index < 0) {
+            throw new RuntimeException(wrongIndexError);
+        }
+
         T[] newArray;
         newArray = (T[]) new Object[data.length - 1];
 
