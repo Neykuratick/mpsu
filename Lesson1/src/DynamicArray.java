@@ -1,8 +1,11 @@
+import java.util.Arrays;
+
 public class DynamicArray<T> {
     private T[] data;
-    private int DEFAULT_SIZE = 5;
     private int size;
-    private String wrongIndexError = "Wrong index";
+
+    private int DEFAULT_SIZE = 5;
+    private final String wrongIndexError = "Wrong index";
 
     public DynamicArray() {
         data = (T[]) new Object[DEFAULT_SIZE];
@@ -21,8 +24,17 @@ public class DynamicArray<T> {
         }
     }
 
+    public void resize(int newSize) {
+        if (newSize >= 0) {
+            this.data = Arrays.copyOf(data, newSize);
+            this.size = newSize;
+        } else {
+            throw new RuntimeException("Size of the array must be over 0");
+        }
+    }
+
     public T getValue(int index) {
-        if (index >= 0 && index <= this.size) {
+        if (index >= 0 && index < this.size) {
             return data[index];
         } else {
             throw new RuntimeException(wrongIndexError);
