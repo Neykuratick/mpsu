@@ -46,6 +46,24 @@ public class DynamicArray<T> {
         setValue(oldLastIndex, value);
     }
 
+    public void insertValue(int index, T value) {
+        T[] newArray;
+        newArray = (T[]) new Object[this.size + 1];
+        this.size = this.size + 1;
+
+        for (int i = 0; i < index; i++) {
+            newArray[i] = getValue(i);
+        }
+
+        newArray[index] = value;
+
+        for (int i = index+1; i < this.size; i++) {
+            newArray[i] = getValue(i-1);
+        }
+
+        this.data = newArray;
+    }
+
     public T getValue(int index) {
         if (index >= 0 && index < this.size) {
             return data[index];
