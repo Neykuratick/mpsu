@@ -111,11 +111,13 @@ public class DynamicArray<T> {
 
         for (T element : this.data) {
 
+            /* -- check if the element is null
+            it is to prevent NullPointerException */
             boolean notNull = true;
-
             if (element == null) {
                 notNull = false;
             }
+            // -- /check if the element is null
 
             if (notNull && element.equals(requiredElement)) {
                 return counter;
@@ -131,7 +133,16 @@ public class DynamicArray<T> {
         int rightIndex = -1;
 
         for (T element : this.data) {
-            if (element == requiredElement) {
+
+            /* -- check if the element is null
+            it is to prevent NullPointerException */
+            boolean notNull = true;
+            if (element == null) {
+                notNull = false;
+            }
+            // -- /check if the element is null
+
+            if (notNull && element.equals(requiredElement)) {
                 rightIndex = counter;
             }
             counter++;
