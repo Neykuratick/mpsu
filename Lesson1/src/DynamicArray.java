@@ -6,14 +6,20 @@ public class DynamicArray<T> {
 
     private int DEFAULT_SIZE = 5;
     private final String wrongIndexError = "Wrong index";
+    private final String negativeArraySize = "Size of the array must be over -1";
 
     public DynamicArray() {
         data = (T[]) new Object[DEFAULT_SIZE];
+        size = DEFAULT_SIZE;
     }
 
     public DynamicArray(int size) {
-        data = (T[]) new Object[size];
-        this.size = size;
+        if (size >= 0) {
+            data = (T[]) new Object[size];
+            this.size = size;
+        } else {
+            throw new RuntimeException(negativeArraySize);
+        }
     }
 
     public void setValue(int index, T value) {
@@ -29,7 +35,7 @@ public class DynamicArray<T> {
             this.data = Arrays.copyOf(data, newSize);
             this.size = newSize;
         } else {
-            throw new RuntimeException("Size of the array must be over 0");
+            throw new RuntimeException(negativeArraySize);
         }
     }
 
