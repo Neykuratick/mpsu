@@ -221,4 +221,45 @@ public class DynamicArrayTests extends Assert {
 
         assertEquals(1, actualValue);
     }
+
+    //  -- /findFirst tests --
+
+
+    //  -- findLast tests --
+
+    @Test
+    public void findLast_int_69420() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray();
+
+        dArr.setValue(1, 69420);
+        int actualValue = dArr.findLast(69420);
+
+        assertEquals(1, actualValue);
+    }
+
+    @Test
+    public void findLast_int_10() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray();
+
+        dArr.setValue(1, 10);
+        int actualValue = dArr.findLast(10);
+
+        assertEquals(1, actualValue);
+    }
+
+    @Test
+    public void findLast_int_010() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray();
+
+        dArr.setValue(1, 010);
+        int actualValue = dArr.findLast(010);
+
+        assertEquals(1, actualValue);
+    }
 }
