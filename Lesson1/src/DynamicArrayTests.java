@@ -222,6 +222,17 @@ public class DynamicArrayTests extends Assert {
         assertEquals(1, actualValue);
     }
 
+    @Test
+    public void findFirst_NotExisting() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.noSuchElementError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.findFirst("haha");
+    }
+
     //  -- /findFirst tests --
 
 
@@ -262,4 +273,61 @@ public class DynamicArrayTests extends Assert {
 
         assertEquals(1, actualValue);
     }
+
+    @Test
+    public void findLast_NotExisting() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.noSuchElementError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.findLast("haha");
+    }
+
+    //  -- /findLast tests --
+
+
+    //  -- addValue tests --
+
+    @Test
+    public void addValue_arraySize() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(10);
+
+        dArr.addValue(1);
+        int actualValue = dArr.getSize();
+
+        assertEquals(11, actualValue);
+    }
+
+    @Test
+    public void addValue_appendedValueIndex() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(5);
+
+        dArr.addValue(1);
+        int actualValue = dArr.findFirst(1);
+
+        assertEquals(5, actualValue);
+    }
+
+    @Test
+    public void addValue_int_69420() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(5);
+
+        dArr.addValue(1);
+        Object actualValue = dArr.getValue(5);
+
+        assertEquals(1, actualValue);
+    }
+
+    //  -- /addValue tests --
+
+
+    //  -- insert tests --
 }

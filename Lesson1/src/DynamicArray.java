@@ -25,7 +25,7 @@ public class DynamicArray<T> {
 
     public void setValue(int index, T value) {
 
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index >= data.length) {
             throw  new RuntimeException(wrongIndexError);
         }
 
@@ -42,9 +42,8 @@ public class DynamicArray<T> {
     }
 
     public void addValue(T value) {
-        int oldLastIndex = this.size;
-        resize(this.size + 1);
-        setValue(oldLastIndex, value);
+        resize(data.length + 1);
+        setValue(data.length - 1, value);
     }
 
     public void insertValue(int index, T value) {
@@ -56,7 +55,7 @@ public class DynamicArray<T> {
         // assigns new array to the old array
 
         T[] newArray;
-        newArray = (T[]) new Object[this.size + 1];
+        newArray = (T[]) new Object[data.length + 1];
 
         for (int i = 0; i < index; i++) {
             newArray[i] = getValue(i);
@@ -80,7 +79,7 @@ public class DynamicArray<T> {
         // assigns new array to the old array
 
         T[] newArray;
-        newArray = (T[]) new Object[this.size - 1];
+        newArray = (T[]) new Object[data.length - 1];
 
         for (int i = 0; i < index; i++) {
             newArray[i] = getValue(i);
@@ -95,7 +94,7 @@ public class DynamicArray<T> {
     }
 
     public T getValue(int index) {
-        if (index < 0 || index >= this.size) {
+        if (index < 0 || index >= data.length) {
             throw new RuntimeException(wrongIndexError);
         }
 
