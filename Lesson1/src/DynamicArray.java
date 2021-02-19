@@ -110,7 +110,14 @@ public class DynamicArray<T> {
         int counter = 0;
 
         for (T element : this.data) {
-            if (element == requiredElement) {
+
+            boolean notNull = true;
+
+            if (element == null) {
+                notNull = false;
+            }
+
+            if (notNull && element.equals(requiredElement)) {
                 return counter;
             }
             counter++;

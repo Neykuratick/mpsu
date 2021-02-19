@@ -192,8 +192,8 @@ public class DynamicArrayTests extends Assert {
 
         DynamicArray dArr = new DynamicArray();
 
-        dArr.setValue(1, 127);
-        int actualValue = dArr.findFirst(127);
+        dArr.setValue(1, 69420);
+        int actualValue = dArr.findFirst(69420);
 
         assertEquals(1, actualValue);
     }
