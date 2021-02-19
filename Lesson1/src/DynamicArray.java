@@ -5,7 +5,7 @@ public class DynamicArray<T> {
     private int size;
 
     private int DEFAULT_SIZE = 5;
-    public static String wrongIndexError = "Wrong index";
+    public static String wrongIndexError = "Index Out of range";
     public static String negativeArraySizeError = "Size of the array must be over -1";
     public static String noSuchElementError = "Value not found";
 
@@ -53,6 +53,10 @@ public class DynamicArray<T> {
         // appends the rest of the old array to the new array
         // extends old array with 1 empty element
         // assigns new array to the old array
+
+        if (index >= data.length || index < 0) {
+            throw new RuntimeException(wrongIndexError);
+        }
 
         T[] newArray;
         newArray = (T[]) new Object[data.length + 1];

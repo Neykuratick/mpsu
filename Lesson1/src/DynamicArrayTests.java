@@ -86,7 +86,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Wrong index");
+        thrown.expectMessage(DynamicArray.wrongIndexError);
 
         DynamicArray dArr = new DynamicArray();
         dArr.setValue(-1, "lala");
@@ -329,5 +329,112 @@ public class DynamicArrayTests extends Assert {
     //  -- /addValue tests --
 
 
-    //  -- insert tests --
+    //  -- insertValue tests --
+
+    @Test
+    public void insertValue_arraySize() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(2, 69420);
+        int actualValue = dArr.getSize();
+
+        assertEquals(7, actualValue);
+    }
+
+    @Test
+    public void insertValue_insertedElementIndex() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(2, 69420);
+        int actualValue = dArr.findFirst(69420);
+
+        assertEquals(2, actualValue);
+    }
+
+    @Test
+    public void insertValue_int_69420() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(2, 69420);
+        Object actualValue = dArr.getValue(2);
+
+        assertEquals(69420, actualValue);
+    }
+
+    @Test
+    public void insertValue_NegativeIndex() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(-1, 69420);
+    }
+
+    @Test
+    public void insertValue_IndexGreaterArrayLength() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray(10);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(11, 69420);
+    }
+
+    @Test
+    public void insertValue_IndexEqualsArrayLength() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray(10);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.insertValue(10, 69420);
+    }
+
+    //  -- /insertValue tests --
+
+
+    //  -- removeValue tests --
 }
