@@ -7,6 +7,8 @@ public class DynamicArrayTests extends Assert {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
+    //  -- init tests --
+
     @Test
     public void init_DefaultArraySize() {
         // positive test
@@ -38,6 +40,11 @@ public class DynamicArrayTests extends Assert {
 
         DynamicArray dArr = new DynamicArray(-1);
     }
+
+    //  -- /init tests --
+
+
+    //  -- set tests --
 
     @Test
     public void setValue_int_69420() {
@@ -85,6 +92,10 @@ public class DynamicArrayTests extends Assert {
         dArr.setValue(-1, "lala");
     }
 
+    //  -- /set tests --
+
+
+    //  -- resize tests --
     @Test
     public void resize_int_69420() {
         // positive test
@@ -97,13 +108,6 @@ public class DynamicArrayTests extends Assert {
         assertEquals(69420, actualValue);
     }
 
-//    @Test
-//    public void resize_NewArrayIsTheSame() {
-//        // positive test
-//
-//        // tests
-//    }
-
     @Test
     public void resize_NewSizeLessThanZero() throws RuntimeException {
         // negative test
@@ -114,6 +118,11 @@ public class DynamicArrayTests extends Assert {
         DynamicArray dArr = new DynamicArray();
         dArr.resize(-1);
     }
+
+    //  -- /resize tests --
+
+
+    //  -- get tests --
 
     @Test
     public void getValue_int_69420() {
@@ -170,5 +179,22 @@ public class DynamicArrayTests extends Assert {
         int actualValue = dArr.getSize();
 
         assertEquals(69420, actualValue);
+    }
+
+    //  -- /get tests --
+
+
+    //  -- findFirst tests --
+
+    @Test
+    public void findFirst_int_69420() {
+        // positive test
+
+        DynamicArray dArr = new DynamicArray();
+
+        dArr.setValue(1, 127);
+        int actualValue = dArr.findFirst(127);
+
+        assertEquals(1, actualValue);
     }
 }

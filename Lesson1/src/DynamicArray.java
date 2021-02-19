@@ -15,29 +15,30 @@ public class DynamicArray<T> {
     }
 
     public DynamicArray(int size) {
-        if (size >= 0) {
-            data = (T[]) new Object[size];
-            this.size = size;
-        } else {
+        if (size < 0) {
             throw new RuntimeException(negativeArraySizeError);
         }
+
+        data = (T[]) new Object[size];
+        this.size = size;
     }
 
     public void setValue(int index, T value) {
-        if (index >= 0 && index <= this.size) {
-            data[index] = value;
-        } else {
-            throw new RuntimeException(wrongIndexError);
+
+        if (index < 0 || index >= this.size) {
+            throw  new RuntimeException(wrongIndexError);
         }
+
+        data[index] = value;
     }
 
     public void resize(int newSize) {
-        if (newSize >= 0) {
-            this.data = Arrays.copyOf(data, newSize);
-            this.size = newSize;
-        } else {
+        if (newSize < 0) {
             throw new RuntimeException(negativeArraySizeError);
         }
+
+        this.data = Arrays.copyOf(data, newSize);
+        this.size = newSize;
     }
 
     public void addValue(T value) {
@@ -94,11 +95,11 @@ public class DynamicArray<T> {
     }
 
     public T getValue(int index) {
-        if (index >= 0 && index < this.size) {
-            return data[index];
-        } else {
+        if (index < 0 || index >= this.size) {
             throw new RuntimeException(wrongIndexError);
         }
+
+        return data[index];
     }
 
     public int getSize() {
@@ -129,10 +130,10 @@ public class DynamicArray<T> {
             counter++;
         }
 
-        if (rightIndex >= 0) {
-            return rightIndex;
-        } else {
+        if (rightIndex < 0) {
             throw  new RuntimeException(noSuchElementError);
         }
+
+        return rightIndex;
     }
 }
