@@ -34,7 +34,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Size of the array must be over -1");
+        thrown.expectMessage(DynamicArray.negativeArraySize);
 
         DynamicArray dArr = new DynamicArray(-1);
     }
@@ -68,7 +68,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Wrong index");
+        thrown.expectMessage(DynamicArray.wrongIndexError);
 
         DynamicArray dArr = new DynamicArray();
         dArr.setValue(10, "lala");
@@ -109,7 +109,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Size of the array must be over -1");
+        thrown.expectMessage(DynamicArray.negativeArraySize);
 
         DynamicArray dArr = new DynamicArray();
         dArr.resize(-1);
@@ -155,7 +155,7 @@ public class DynamicArrayTests extends Assert {
         // negative test
 
         thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Wrong index");
+        thrown.expectMessage(DynamicArray.wrongIndexError);
 
         DynamicArray dArr = new DynamicArray();
         dArr.getValue(-1);

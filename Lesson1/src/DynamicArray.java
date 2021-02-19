@@ -5,8 +5,8 @@ public class DynamicArray<T> {
     private int size;
 
     private int DEFAULT_SIZE = 5;
-    private final String wrongIndexError = "Wrong index";
-    private final String negativeArraySize = "Size of the array must be over -1";
+    public static String wrongIndexError = "Wrong index";
+    public static String negativeArraySize = "Size of the array must be over -1";
 
     public DynamicArray() {
         data = (T[]) new Object[DEFAULT_SIZE];
