@@ -2,25 +2,30 @@ import java.util.Arrays;
 
 public class DynamicArray<T> {
     private T[] data;
-    private int size;
-
     private int DEFAULT_SIZE = 5;
+
     public static String wrongIndexError = "Index Out of range";
     public static String negativeArraySizeError = "Size of the array must be over -1";
     public static String noSuchElementError = "Value not found";
 
     public DynamicArray() {
         data = (T[]) new Object[DEFAULT_SIZE];
-        size = DEFAULT_SIZE;
     }
 
     public DynamicArray(int size) {
-        if (size < 0) {
+        if (size < 1) {
             throw new RuntimeException(negativeArraySizeError);
         }
 
         data = (T[]) new Object[size];
-        this.size = size;
+    }
+
+    public void resize(int newSize) {
+        if (newSize < 1) {
+            throw new RuntimeException(negativeArraySizeError);
+        }
+
+        this.data = Arrays.copyOf(data, newSize);
     }
 
     public void setValue(int index, T value) {
@@ -32,18 +37,29 @@ public class DynamicArray<T> {
         data[index] = value;
     }
 
-    public void resize(int newSize) {
-        if (newSize < 0) {
-            throw new RuntimeException(negativeArraySizeError);
+    public void removeValue(int index) {
+        // makes new T[] array with one element less
+        // copies all the values to that array until the given index
+        // pops the given index value
+        // appends the rest of the old array to the new array
+        // assigns new array to the old array
+
+        if (index >= data.length || index < 0) {
+            throw new RuntimeException(wrongIndexError);
         }
 
-        this.data = Arrays.copyOf(data, newSize);
-        this.size = newSize;
-    }
+        T[] newArray;
+        newArray = (T[]) new Object[data.length - 1];
 
-    public void addValue(T value) {
-        resize(data.length + 1);
-        setValue(data.length - 1, value);
+        for (int i = 0; i < index; i++) {
+            newArray[i] = getValue(i);
+        }
+
+        for (int i = index; i < newArray.length; i++) {
+            newArray[i] = getValue(i+1);
+        }
+
+        this.data = newArray;
     }
 
     public void insertValue(int index, T value) {
@@ -71,34 +87,12 @@ public class DynamicArray<T> {
             newArray[i] = getValue(i-1);
         }
 
-        this.size = this.size + 1;
         this.data = newArray;
     }
 
-    public void removeValue(int index) {
-        // makes new T[] array with one element less
-        // copies all the values to that array until the given index
-        // pops the given index value
-        // appends the rest of the old array to the new array
-        // assigns new array to the old array
-
-        if (index >= data.length || index < 0) {
-            throw new RuntimeException(wrongIndexError);
-        }
-
-        T[] newArray;
-        newArray = (T[]) new Object[data.length - 1];
-
-        for (int i = 0; i < index; i++) {
-            newArray[i] = getValue(i);
-        }
-
-        for (int i = index; i < newArray.length; i++) {
-            newArray[i] = getValue(i+1);
-        }
-
-        this.size = newArray.length;
-        this.data = newArray;
+    public void addValue(T value) {
+        resize(data.length + 1);
+        setValue(data.length - 1, value);
     }
 
     public T getValue(int index) {

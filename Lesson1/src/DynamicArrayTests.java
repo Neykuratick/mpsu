@@ -21,7 +21,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void init_CustomArraySize_10() {
+    public void init_CustomArraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(10);
@@ -32,7 +32,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void init_CustomArraySize_NegativeSize() throws RuntimeException {
+    public void init_CustomArraySize_NegativeSize_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -41,13 +41,23 @@ public class DynamicArrayTests extends Assert {
         DynamicArray dArr = new DynamicArray(-1);
     }
 
+    @Test
+    public void init_CustomArraySize_ZeroSize_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.negativeArraySizeError);
+
+        DynamicArray dArr = new DynamicArray(0);
+    }
+
     //  -- /init tests --
 
 
     //  -- set tests --
 
     @Test
-    public void setValue_int_69420() {
+    public void setValueInt_value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -59,7 +69,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void setValue_String() {
+    public void setValueString_value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -71,7 +81,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void setValue_IndexGreaterThanArrayLength() throws RuntimeException {
+    public void setValue_IndexGreaterThanArrayLength_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -82,7 +92,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void setValue_IndexLessThanZero() throws RuntimeException {
+    public void setValue_IndexNegative_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -97,7 +107,7 @@ public class DynamicArrayTests extends Assert {
 
     //  -- resize tests --
     @Test
-    public void resize_int_69420() {
+    public void resize_arraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -109,7 +119,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void resize_NewSizeLessThanZero() throws RuntimeException {
+    public void resize_NegativeSize_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -119,13 +129,24 @@ public class DynamicArrayTests extends Assert {
         dArr.resize(-1);
     }
 
+    @Test
+    public void resize_ZeroSize_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.negativeArraySizeError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.resize(0);
+    }
+
     //  -- /resize tests --
 
 
     //  -- get tests --
 
     @Test
-    public void getValue_int_69420() {
+    public void getValue_value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -137,30 +158,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void getValue_String() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        dArr.setValue(1, "69420");
-        Object actualValue = dArr.getValue(1);
-
-        assertEquals("69420", actualValue);
-    }
-
-    @Test
-    public void getValue_null() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        Object actualValue = dArr.getValue(1);
-
-        assertEquals(null, actualValue);
-    }
-
-    @Test
-    public void getValue_IndexLessThanZero() throws RuntimeException {
+    public void getValue_IndexNegative_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -171,7 +169,18 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void getSize_int_69420() {
+    public void getValue_IndexGreaterThanArraySize_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.wrongIndexError);
+
+        DynamicArray dArr = new DynamicArray();
+        dArr.getValue(dArr.getSize() + 1);
+    }
+
+    @Test
+    public void getSize_arraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(69420);
@@ -187,7 +196,7 @@ public class DynamicArrayTests extends Assert {
     //  -- findFirst tests --
 
     @Test
-    public void findFirst_int_69420() {
+    public void findFirst_int() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -199,31 +208,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void findFirst_int_10() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        dArr.setValue(1, 10);
-        int actualValue = dArr.findFirst(10);
-
-        assertEquals(1, actualValue);
-    }
-
-    @Test
-    public void findFirst_int_010() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        dArr.setValue(1, 010);
-        int actualValue = dArr.findFirst(010);
-
-        assertEquals(1, actualValue);
-    }
-
-    @Test
-    public void findFirst_NotExisting() throws RuntimeException {
+    public void findFirst_NotExisting_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -239,7 +224,7 @@ public class DynamicArrayTests extends Assert {
     //  -- findLast tests --
 
     @Test
-    public void findLast_int_69420() {
+    public void findLast_int() {
         // positive test
 
         DynamicArray dArr = new DynamicArray();
@@ -251,31 +236,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void findLast_int_10() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        dArr.setValue(1, 10);
-        int actualValue = dArr.findLast(10);
-
-        assertEquals(1, actualValue);
-    }
-
-    @Test
-    public void findLast_int_010() {
-        // positive test
-
-        DynamicArray dArr = new DynamicArray();
-
-        dArr.setValue(1, 010);
-        int actualValue = dArr.findLast(010);
-
-        assertEquals(1, actualValue);
-    }
-
-    @Test
-    public void findLast_NotExisting() throws RuntimeException {
+    public void findLast_NotExisting_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -291,7 +252,7 @@ public class DynamicArrayTests extends Assert {
     //  -- addValue tests --
 
     @Test
-    public void addValue_arraySize() {
+    public void addValue_arraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(10);
@@ -303,7 +264,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void addValue_appendedValueIndex() {
+    public void addValue_Index_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(5);
@@ -315,7 +276,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void addValue_int_69420() {
+    public void addValue_Value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(5);
@@ -332,7 +293,7 @@ public class DynamicArrayTests extends Assert {
     //  -- insertValue tests --
 
     @Test
-    public void insertValue_arraySize() {
+    public void insertValue_arraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(6);
@@ -349,7 +310,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void insertValue_insertedElementIndex() {
+    public void insertValue_insertedElementIndex_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(6);
@@ -366,7 +327,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void insertValue_int_69420() {
+    public void insertValue_value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(6);
@@ -383,7 +344,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void insertValue_NegativeIndex() throws RuntimeException {
+    public void insertValue_NegativeIndex_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -400,7 +361,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void insertValue_IndexGreaterArrayLength() throws RuntimeException {
+    public void insertValue_IndexGreaterArrayLength_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -417,7 +378,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void insertValue_IndexEqualsArrayLength() throws RuntimeException {
+    public void insertValue_IndexEqualsArrayLength_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -439,7 +400,7 @@ public class DynamicArrayTests extends Assert {
     //  -- removeValue tests --
 
     @Test
-    public void removeValue_arraySize() {
+    public void removeValue_arraySize_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(6);
@@ -456,7 +417,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void removeValue_int_69420() {
+    public void removeValue_value_Validation() {
         // positive test
 
         DynamicArray dArr = new DynamicArray(6);
@@ -473,7 +434,25 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void removeValue_NegativeIndex() throws RuntimeException {
+    public void removeValue_removedElementIndex_Validation() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DynamicArray.noSuchElementError);
+
+        DynamicArray dArr = new DynamicArray(6);
+        dArr.setValue(0, "garbage");
+        dArr.setValue(1, "garbage");
+        dArr.setValue(2, "gotcha");
+        dArr.setValue(3, 2);
+        dArr.setValue(4, "garbage");
+
+        dArr.removeValue(2);
+        int actualValue = dArr.findFirst(69420);
+    }
+
+    @Test
+    public void removeValue_NegativeIndex_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -490,7 +469,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void removeValue_IndexGreaterArrayLength() throws RuntimeException {
+    public void removeValue_IndexGreaterArrayLength_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -507,7 +486,7 @@ public class DynamicArrayTests extends Assert {
     }
 
     @Test
-    public void removeValue_IndexEqualsArrayLength() throws RuntimeException {
+    public void removeValue_IndexEqualsArrayLength_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -521,24 +500,6 @@ public class DynamicArrayTests extends Assert {
         dArr.setValue(4, "garbage");
 
         dArr.removeValue(10);
-    }
-
-    @Test
-    public void removeValue_removedElementIndex() throws RuntimeException {
-        // negative test
-
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage(DynamicArray.noSuchElementError);
-
-        DynamicArray dArr = new DynamicArray(6);
-        dArr.setValue(0, "garbage");
-        dArr.setValue(1, "garbage");
-        dArr.setValue(2, "gotcha");
-        dArr.setValue(3, 2);
-        dArr.setValue(4, "garbage");
-
-        dArr.removeValue(2);
-        int actualValue = dArr.findFirst(69420);
     }
 
     //  -- /removeValue tests --
