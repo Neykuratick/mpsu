@@ -4,6 +4,7 @@ public class DLinkedList {
     int size = 0;
 
     public static String notFoundError = "entity not found";
+    public static String outOfRangeError = "entity is out of range";
 
     public boolean isEmpty() {
         if (head == null) {
@@ -58,6 +59,12 @@ public class DLinkedList {
     }
 
     public Object getValueIndex(int index) {
+
+        if (index < 0 || index >= size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
+
         Node traverse = head;
 
         int iteratorIndex = 0;

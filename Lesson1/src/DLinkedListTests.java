@@ -1,3 +1,4 @@
+import Arrays.DynamicArray;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.Assert;
@@ -229,4 +230,89 @@ public class DLinkedListTests extends Assert {
     }
 
     // -- /notEmpty --
+
+    // -- getValueIndex --
+
+    @Test
+    public void getValueIndex_FirstIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.push(69420);
+
+        Object expected = 69420;
+        Object actual = list.getValueIndex(0);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getValueIndex_LastIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.push(1);
+        list.push(1);
+        list.push(1);
+        list.push(1);
+        list.append(69420);
+
+        Object expected = 69420;
+        Object actual = list.getValueIndex(4);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getValueIndex_MiddleIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+
+        list.append(1);
+        list.append(1);
+        list.append(69420);
+        list.append(69420);
+        list.append(69420);
+        list.append(1);
+
+        Object expected = 69420;
+        Object actual = list.getValueIndex(2);
+        assertEquals(actual, expected);
+
+        expected = 69420;
+        actual = list.getValueIndex(3);
+        assertEquals(actual, expected);
+
+        expected = 69420;
+        actual = list.getValueIndex(4);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getValueIndex_NegativeIndex_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DLinkedList.outOfRangeError);
+
+        DLinkedList list = new DLinkedList();
+
+        list.getValueIndex(-1);
+    }
+
+    @Test
+    public void getValueIndex_IndexOutOfRange_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DLinkedList.outOfRangeError);
+
+        DLinkedList list = new DLinkedList();
+
+        list.getValueIndex(1000);
+    }
+
+    // -- /getValueIndex --
 }
