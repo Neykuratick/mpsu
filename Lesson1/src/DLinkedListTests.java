@@ -316,6 +316,106 @@ public class DLinkedListTests extends Assert {
 
     // -- /getValueIndex --
 
+    // -- setValueIndex --
+
+    @Test
+    public void setValueIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        list.setValueIndex(1, 228);
+
+        Object expected = 228;
+        Object actual = list.getValueIndex(1);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void setValueIndex_FirstIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        list.setValueIndex(0, 228);
+
+        Object expected = 228;
+        Object actual = list.getValueIndex(0);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void setValueIndex_MiddleIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        list.setValueIndex(1, 228);
+
+        Object expected = 228;
+        Object actual = list.getValueIndex(1);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void setValueIndex_LastIndex() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        list.setValueIndex(3, 228);
+
+        Object expected = 228;
+        Object actual = list.getValueIndex(3);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void setValueIndex_NegativeIndex_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DLinkedList.outOfRangeError);
+
+        DLinkedList list = new DLinkedList();
+
+        list.setValueIndex(-1, 243);
+    }
+
+    @Test
+    public void setValueIndex_IndexOutOfRange_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DLinkedList.outOfRangeError);
+
+        DLinkedList list = new DLinkedList();
+
+        list.setValueIndex(1000, 234);
+    }
+
+    // -- /setValueIndex --
+
     // -- getSize --
 
     @Test

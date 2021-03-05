@@ -15,5 +15,10 @@ public class Main {
         list.push(1);
 
         list.printAll();
+        System.out.println();
+
+        list.setValueIndex(1, 228);
+
+        list.printAll();
     }
 }

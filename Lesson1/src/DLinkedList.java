@@ -6,6 +6,15 @@ public class DLinkedList {
     public static String notFoundError = "entity not found";
     public static String outOfRangeError = "entity is out of range";
 
+    public void printAll() {
+        Node traverse = head;
+
+        while (traverse != null) {
+            System.out.println(traverse.data);
+            traverse = traverse.next;
+        }
+    }
+
     public boolean isEmpty() {
         if (head == null) {
             return true;
@@ -81,12 +90,26 @@ public class DLinkedList {
         throw new RuntimeException(notFoundError);
     }
 
-    public void printAll() {
+    public void setValueIndex(int index, Object data) {
+
+        if (index < 0 || index >= size) {
+            throw new RuntimeException(outOfRangeError);
+        }
+
         Node traverse = head;
 
-        while (traverse != null) {
-            System.out.println(traverse.data);
+        int iteratorIndex = 0;
+
+        while (iteratorIndex != index && traverse.next != null) {
             traverse = traverse.next;
+            iteratorIndex++;
         }
+
+        if (traverse != null) {
+            traverse.data = data;
+            return;
+        }
+
+        throw new RuntimeException(notFoundError);
     }
 }
