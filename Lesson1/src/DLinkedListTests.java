@@ -188,4 +188,45 @@ public class DLinkedListTests extends Assert {
     }
 
     // -- /isEmpty --
+
+    // -- notEmpty --
+
+    @Test
+    public void notEmpty_EmptyList() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        boolean expected = false;
+        boolean actual = list.notEmpty();
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void notEmpty_NotEmptyList() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.push(1);
+
+        boolean expected = true;
+        boolean actual = list.notEmpty();
+        assertEquals(actual, expected);
+
+        list.push(1);
+        expected = true;
+        actual = list.notEmpty();
+        assertEquals(actual, expected);
+
+        list.push(1);
+        list.push(1);
+        list.push(1);
+        list.push(1);
+        expected = true;
+        actual = list.notEmpty();
+        assertEquals(actual, expected);
+    }
+
+    // -- /notEmpty --
 }

@@ -13,7 +13,7 @@ public class DLinkedList {
     }
 
     public boolean notEmpty() {
-        if (head != null) {
+        if (head == null) {
             return false;
         }
         return true;
