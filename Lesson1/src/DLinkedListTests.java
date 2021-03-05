@@ -315,4 +315,40 @@ public class DLinkedListTests extends Assert {
     }
 
     // -- /getValueIndex --
+
+    // -- getSize --
+
+    @Test
+    public void getSize_EmptyList() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        int expected = 0;
+        int actual = list.size;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void getSize_NotEmptyList() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+
+        int expected = 1;
+        int actual = list.size;
+        assertEquals(actual, expected);
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        expected = 4;
+        actual = list.size;
+        assertEquals(actual, expected);
+    }
+
+    // -- /getSize --
 }
