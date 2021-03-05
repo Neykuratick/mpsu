@@ -451,4 +451,128 @@ public class DLinkedListTests extends Assert {
     }
 
     // -- /getSize --
+
+//    // -- findNodeFirst --
+//
+//    @Test
+//    public void findNodeFirst_FirstNode() {
+//        // positive test
+//
+//        DLinkedList list = new DLinkedList();
+//
+//        list.append(228);
+//        list.append(1);
+//        list.append(1);
+//        list.append(1);
+//        list.append(1);
+//
+//        Node expected = list.getNodeIndex(0);
+//        Node actual = list.findNodeFirst(228);
+//        assertEquals(actual, expected);
+//    }
+//
+//    // -- /findNodeFirst --
+
+    // -- name --
+
+    @Test
+    public void removeFirstNodeValue_FirstNode() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(228);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(1);
+
+        Object expected = 1;
+        Object actual = list.getValueIndex(0);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void removeFirstNodeValue_MiddleNode() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(228);
+        list.append(1);
+        list.append(1);
+
+        Object expected = 1;
+        Object actual = list.getValueIndex(2);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void removeFirstNodeValue_LastNode() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(228);
+        list.append(1);
+
+        Object expected = 111;
+        Object actual = list.getValueIndex(3);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void removeFirstNodeValue_MultipleNodes() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(228);
+        list.append(1111);
+        list.append(1);
+
+        Object expected = 1111;
+        Object actual = list.getValueIndex(3);
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void removeFirstNodeValue_Size_Validation() {
+        // positive test
+
+        DLinkedList list = new DLinkedList();
+
+        list.append(1);
+        list.append(1);
+        list.append(1);
+        list.append(228);
+        list.append(1111);
+        list.append(1);
+
+        Object expected = 5;
+        Object actual = list.size;
+        assertEquals(actual, expected);
+    }
+
+    @Test
+    public void emoveFirstNodeValue_ObjectDoesntExist_ThrowsException() throws RuntimeException {
+        // negative test
+
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage(DLinkedList.notFoundError);
+
+        DLinkedList list = new DLinkedList();
+
+        list.removeFirstNodeValue(234234);
+    }
+
+    // -- /name --
 }
