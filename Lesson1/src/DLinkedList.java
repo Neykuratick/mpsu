@@ -135,20 +135,20 @@ public class DLinkedList {
         throw new RuntimeException(notFoundError);
     }
 
-//    public Node findNodeFirst(Object value) {
-//        Node traverse = head;
-//
-//        while (traverse != null) {
-//
-//            if (traverse.data == value) {
-//                return traverse;
-//            }
-//
-//            traverse = traverse.next;
-//        }
-//
-//        throw new RuntimeException(notFoundError);
-//    }
+    public Node findNodeFirst(Object value) {
+        Node traverse = head;
+
+        while (traverse != null) {
+
+            if (traverse.data.equals(value)) {
+                return traverse;
+            }
+
+            traverse = traverse.next;
+        }
+
+        throw new RuntimeException(notFoundError);
+    }
 
     private void removeNodeHead() {
         head = head.next;
