@@ -16,4 +16,16 @@ public class Stack<T> {
 
         return array.getValue(size-1);
     }
+
+    public void pop() {
+        array.resize(size-1);
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
+    }
 }
