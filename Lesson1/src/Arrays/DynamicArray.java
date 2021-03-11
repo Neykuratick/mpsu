@@ -15,7 +15,7 @@ public class DynamicArray<T> {
     }
 
     public DynamicArray(int size) {
-        if (size < 1) {
+        if (size < 0) {
             throw new RuntimeException(negativeArraySizeError);
         }
 
