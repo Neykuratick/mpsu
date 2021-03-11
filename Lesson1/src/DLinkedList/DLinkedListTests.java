@@ -1,4 +1,5 @@
-import Arrays.DynamicArray;
+package DLinkedList;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.Assert;
