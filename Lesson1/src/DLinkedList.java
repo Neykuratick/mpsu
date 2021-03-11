@@ -151,12 +151,12 @@ public class DLinkedList {
     }
 
 
-    public void insertAfter(Node insertNode,int value) {
+    public void insertAfter(Node node,int value) {
         Node newNode = new Node(value);
 
-        newNode.next = insertNode.next;
-        insertNode.next=newNode;
-        newNode.prev=insertNode;
+        newNode.next = node.next;
+        node.next=newNode;
+        newNode.prev=node;
 
         if (newNode.next != null) {
             // if the node is to be inserted after last node
@@ -167,10 +167,10 @@ public class DLinkedList {
         }
     }
 
-    public void insertBefore(Node insertNode,int value) {
+    public void insertBefore(Node node,int value) {
         Node newNode = new Node(value);
 
-        if (insertNode == head) {
+        if (node == head) {
             // if the node is to be inserted before head
 
             newNode.prev = null;
@@ -180,10 +180,10 @@ public class DLinkedList {
             return;
         }
 
-        newNode.prev = insertNode.prev;
-        newNode.next = insertNode;
-        insertNode.prev.next = newNode;
-        insertNode.prev = newNode;
+        newNode.prev = node.prev;
+        newNode.next = node;
+        node.prev.next = newNode;
+        node.prev = newNode;
     }
 
     private void removeNodeHead() {
