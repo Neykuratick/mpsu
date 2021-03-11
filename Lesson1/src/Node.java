@@ -1,13 +1,13 @@
-public class Node {
+public class Node<T> {
     Node next;
     Node prev;
-    Object data;
+    T data;
 
     public Node() {
 
     }
 
-    public Node(Object value) {
+    public Node(T value) {
         data = value;
     }
 }

@@ -38,7 +38,7 @@ public class DLinkedListTests extends Assert {
 
         int actual = list.size;
         int expected = 0;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     //  -- /init tests --
@@ -55,7 +55,7 @@ public class DLinkedListTests extends Assert {
 
         int actual = list.size;
         int expected = 1;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.push(1);
         list.push(1);
@@ -63,7 +63,7 @@ public class DLinkedListTests extends Assert {
 
         actual = list.size;
         expected = 4;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -78,20 +78,20 @@ public class DLinkedListTests extends Assert {
         list.push(4);
 
         Object expected = 1;
-        Object actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
 
         expected = 2;
-        actual = list.getValueIndex(2);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(2);
+        assertEquals(expected, actual);
 
         expected = 3;
-        actual = list.getValueIndex(1);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(1);
+        assertEquals(expected, actual);
 
         expected = 4;
-        actual = list.getValueIndex(0);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(0);
+        assertEquals(expected, actual);
     }
 
     // -- /push --
@@ -108,7 +108,7 @@ public class DLinkedListTests extends Assert {
 
         int actual = list.size;
         int expected = 1;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.append(1);
         list.append(1);
@@ -116,7 +116,7 @@ public class DLinkedListTests extends Assert {
 
         actual = list.size;
         expected = 4;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -131,20 +131,20 @@ public class DLinkedListTests extends Assert {
         list.append(4);
 
         Object expected = 1;
-        Object actual = list.getValueIndex(0);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(0);
+        assertEquals(expected, actual);
 
         expected = 2;
-        actual = list.getValueIndex(1);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(1);
+        assertEquals(expected, actual);
 
         expected = 3;
-        actual = list.getValueIndex(2);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(2);
+        assertEquals(expected, actual);
 
         expected = 4;
-        actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
     }
 
     // -- /append --
@@ -159,7 +159,7 @@ public class DLinkedListTests extends Assert {
 
         boolean expected = true;
         boolean actual = list.isEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -172,12 +172,12 @@ public class DLinkedListTests extends Assert {
 
         boolean expected = false;
         boolean actual = list.isEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.push(1);
         expected = false;
         actual = list.isEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.push(1);
         list.push(1);
@@ -185,7 +185,7 @@ public class DLinkedListTests extends Assert {
         list.push(1);
         expected = false;
         actual = list.isEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     // -- /isEmpty --
@@ -200,7 +200,7 @@ public class DLinkedListTests extends Assert {
 
         boolean expected = false;
         boolean actual = list.notEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -213,12 +213,12 @@ public class DLinkedListTests extends Assert {
 
         boolean expected = true;
         boolean actual = list.notEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.push(1);
         expected = true;
         actual = list.notEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.push(1);
         list.push(1);
@@ -226,15 +226,15 @@ public class DLinkedListTests extends Assert {
         list.push(1);
         expected = true;
         actual = list.notEmpty();
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     // -- /notEmpty --
 
-    // -- getValueIndex --
+    // -- getValueByIndex --
 
     @Test
-    public void getValueIndex_FirstIndex() {
+    public void getValueByIndex_FirstIndex() {
         // positive test
 
         DLinkedList list = new DLinkedList();
@@ -242,12 +242,12 @@ public class DLinkedListTests extends Assert {
         list.push(69420);
 
         Object expected = 69420;
-        Object actual = list.getValueIndex(0);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(0);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void getValueIndex_LastIndex() {
+    public void getValueByIndex_LastIndex() {
         // positive test
 
         DLinkedList list = new DLinkedList();
@@ -259,12 +259,12 @@ public class DLinkedListTests extends Assert {
         list.append(69420);
 
         Object expected = 69420;
-        Object actual = list.getValueIndex(4);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(4);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void getValueIndex_MiddleIndex() {
+    public void getValueByIndex_MiddleIndex() {
         // positive test
 
         DLinkedList list = new DLinkedList();
@@ -278,20 +278,20 @@ public class DLinkedListTests extends Assert {
         list.append(1);
 
         Object expected = 69420;
-        Object actual = list.getValueIndex(2);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(2);
+        assertEquals(expected, actual);
 
         expected = 69420;
-        actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
 
         expected = 69420;
-        actual = list.getValueIndex(4);
-        assertEquals(actual, expected);
+        actual = list.getValueByIndex(4);
+        assertEquals(expected, actual);
     }
 
     @Test
-    public void getValueIndex_NegativeIndex_ThrowsException() throws RuntimeException {
+    public void getValueByIndex_NegativeIndex_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -299,11 +299,11 @@ public class DLinkedListTests extends Assert {
 
         DLinkedList list = new DLinkedList();
 
-        list.getValueIndex(-1);
+        list.getValueByIndex(-1);
     }
 
     @Test
-    public void getValueIndex_IndexOutOfRange_ThrowsException() throws RuntimeException {
+    public void getValueByIndex_IndexOutOfRange_ThrowsException() throws RuntimeException {
         // negative test
 
         thrown.expect(RuntimeException.class);
@@ -311,10 +311,10 @@ public class DLinkedListTests extends Assert {
 
         DLinkedList list = new DLinkedList();
 
-        list.getValueIndex(1000);
+        list.getValueByIndex(1000);
     }
 
-    // -- /getValueIndex --
+    // -- /getValueByIndex --
 
     // -- setValueIndex --
 
@@ -332,8 +332,8 @@ public class DLinkedListTests extends Assert {
         list.setValueIndex(1, 228);
 
         Object expected = 228;
-        Object actual = list.getValueIndex(1);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(1);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -350,8 +350,8 @@ public class DLinkedListTests extends Assert {
         list.setValueIndex(0, 228);
 
         Object expected = 228;
-        Object actual = list.getValueIndex(0);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(0);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -368,8 +368,8 @@ public class DLinkedListTests extends Assert {
         list.setValueIndex(1, 228);
 
         Object expected = 228;
-        Object actual = list.getValueIndex(1);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(1);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -386,8 +386,8 @@ public class DLinkedListTests extends Assert {
         list.setValueIndex(3, 228);
 
         Object expected = 228;
-        Object actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -426,7 +426,7 @@ public class DLinkedListTests extends Assert {
 
         int expected = 0;
         int actual = list.size;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -439,7 +439,7 @@ public class DLinkedListTests extends Assert {
 
         int expected = 1;
         int actual = list.size;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
 
         list.append(1);
         list.append(1);
@@ -447,7 +447,7 @@ public class DLinkedListTests extends Assert {
 
         expected = 4;
         actual = list.size;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     // -- /getSize --
@@ -468,7 +468,7 @@ public class DLinkedListTests extends Assert {
 
         Node expected = list.getNodeIndex(0);
         Node actual = list.findNodeFirst(228);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -485,7 +485,7 @@ public class DLinkedListTests extends Assert {
 
         Node expected = list.getNodeIndex(2);
         Node actual = list.findNodeFirst(228);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -502,7 +502,7 @@ public class DLinkedListTests extends Assert {
 
         Node expected = list.getNodeIndex(4);
         Node actual = list.findNodeFirst(228);
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -533,9 +533,11 @@ public class DLinkedListTests extends Assert {
         list.append(1);
         list.append(1);
 
+        list.removeFirstNodeValue(228);
+
         Object expected = 1;
-        Object actual = list.getValueIndex(0);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(0);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -550,9 +552,11 @@ public class DLinkedListTests extends Assert {
         list.append(1);
         list.append(1);
 
+        list.removeFirstNodeValue(228);
+
         Object expected = 1;
-        Object actual = list.getValueIndex(2);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(2);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -567,9 +571,11 @@ public class DLinkedListTests extends Assert {
         list.append(228);
         list.append(1);
 
-        Object expected = 111;
-        Object actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        list.removeFirstNodeValue(228);
+
+        Object expected = 1;
+        Object actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -585,9 +591,11 @@ public class DLinkedListTests extends Assert {
         list.append(1111);
         list.append(1);
 
+        list.removeFirstNodeValue(228);
+
         Object expected = 1111;
-        Object actual = list.getValueIndex(3);
-        assertEquals(actual, expected);
+        Object actual = list.getValueByIndex(3);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -603,9 +611,11 @@ public class DLinkedListTests extends Assert {
         list.append(1111);
         list.append(1);
 
+        list.removeFirstNodeValue(228);
+
         Object expected = 5;
         Object actual = list.size;
-        assertEquals(actual, expected);
+        assertEquals(expected, actual);
     }
 
     @Test

@@ -1,4 +1,4 @@
-public class DLinkedList {
+public class DLinkedList<T> {
     Node head;
     Node tail;
     int size = 0;
@@ -16,17 +16,11 @@ public class DLinkedList {
     }
 
     public boolean isEmpty() {
-        if (head == null) {
-            return true;
-        }
-        return false;
+        return head == null;
     }
 
     public boolean notEmpty() {
-        if (head == null) {
-            return false;
-        }
-        return true;
+        return head != null;
     }
 
     public void push(Object data) {
@@ -67,7 +61,7 @@ public class DLinkedList {
         tail = newNode;
     }
 
-    public Object getValueIndex(int index) {
+    public Object getValueByIndex(int index) {
 
         if (index < 0 || index >= size) {
             throw new RuntimeException(outOfRangeError);

@@ -8,7 +8,9 @@ public class Main {
         list.printAll();
         System.out.println();
 
-        list.removeFirstNodeValue(2);
+        Node node = list.findNodeFirst(2);
+        list.insertAfter(node, 22);
+
         list.printAll();
     }
 }
