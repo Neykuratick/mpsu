@@ -11,14 +11,21 @@ public class Stack<T> {
         size++;
     }
 
+    public void pop() {
+        array.resize(size-1);
+        size--;
+    }
+
     public Object peek() {
         // returns the last item in the stack
 
         return array.getValue(size-1);
     }
 
-    public void pop() {
-        array.resize(size-1);
+    public void print() {
+        for (int i = 0; i < size; i++) {
+            System.out.println(array.getValue(i));
+        }
     }
 
     public int getSize() {
