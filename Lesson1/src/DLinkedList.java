@@ -150,6 +150,22 @@ public class DLinkedList {
         throw new RuntimeException(notFoundError);
     }
 
+
+    public void insertAfter(Node curr,int x) {
+        Node newNode = new Node(x);
+
+        newNode.next = curr.next;
+        curr.next=newNode;
+        newNode.prev=curr;
+
+        // if the node is to be inserted after last node
+        if (newNode.next != null) {
+            newNode.next.prev = newNode;
+        } else {
+            tail = newNode;
+        }
+    }
+
     private void removeNodeHead() {
         head = head.next;
         head.prev = null;
