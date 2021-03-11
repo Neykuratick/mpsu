@@ -102,4 +102,15 @@ public class StackTests {
         actualValue = stacky.peek();
         assertEquals(expected, actualValue);
     }
+
+    @Test
+    public void peek_data_test() {
+        Stack<Integer> stacky = new Stack<Integer>();
+        Object expected = 1;
+
+        stacky.push(1);
+
+        Object actualValue = stacky.peek();
+        assertEquals(expected, actualValue);
+    }
 }
