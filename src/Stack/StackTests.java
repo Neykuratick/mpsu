@@ -113,4 +113,24 @@ public class StackTests {
         Object actualValue = stacky.peek();
         assertEquals(expected, actualValue);
     }
+
+    @Test
+    public void isEmpty_true() {
+        Stack<Integer> stacky = new Stack<Integer>();
+        boolean expected = true;
+
+        boolean actualValue = stacky.isEmpty();
+        assertEquals(expected, actualValue);
+    }
+
+    @Test
+    public void isEmpty_false() {
+        Stack<Integer> stacky = new Stack<Integer>();
+        boolean expected = false;
+
+        stacky.push(1);
+
+        boolean actualValue = stacky.isEmpty();
+        assertEquals(expected, actualValue);
+    }
 }
