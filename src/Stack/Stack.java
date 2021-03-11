@@ -4,7 +4,7 @@ import Arrays.DynamicArray;
 
 public class Stack<T> {
     int size = 0;
-    DynamicArray array = new DynamicArray(0);
+    DynamicArray<T> array = new DynamicArray<T>(size);
 
     public void push(T data) {
         array.addValue(data);
@@ -16,7 +16,7 @@ public class Stack<T> {
         size--;
     }
 
-    public Object peek() {
+    public T peek() {
         // returns the last item in the stack
 
         return array.getValue(size-1);

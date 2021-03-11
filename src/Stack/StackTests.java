@@ -43,4 +43,63 @@ public class StackTests {
         Object actualValue = stacky.peek();
         assertEquals(expected, actualValue);
     }
+
+    @Test
+    public void pop_size_justify() {
+        Stack<Integer> stacky = new Stack<Integer>();
+        int expected = 0;
+
+        stacky.push(1);
+        stacky.pop();
+
+        int actualValue = stacky.getSize();
+        assertEquals(expected, actualValue);
+
+        stacky.push(1);
+        stacky.push(1);
+        stacky.push(1);
+        stacky.pop();
+        expected = 2;
+        actualValue = stacky.getSize();
+        assertEquals(expected, actualValue);
+
+        stacky.push(1);
+        stacky.push(1);
+        stacky.push(1);
+        stacky.pop();
+        stacky.pop();
+        expected = 3;
+        actualValue = stacky.getSize();
+        assertEquals(expected, actualValue);
+    }
+
+    @Test
+    public void pop_data_justify() {
+        Stack<Integer> stacky = new Stack<Integer>();
+        Object expected = 1;
+
+        stacky.push(1);
+        stacky.push(2);
+        stacky.pop();
+
+        Object actualValue = stacky.peek();
+        assertEquals(expected, actualValue);
+
+        stacky.push(111);
+        stacky.push(222);
+        stacky.push(333);
+        stacky.pop();
+        expected = 222;
+        actualValue = stacky.peek();
+        assertEquals(expected, actualValue);
+
+        stacky.push(444);
+        stacky.push(555);
+        stacky.push(666);
+        stacky.pop();
+        stacky.pop();
+        expected = 444;
+        actualValue = stacky.peek();
+        assertEquals(expected, actualValue);
+    }
 }

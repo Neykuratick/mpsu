@@ -23,7 +23,7 @@ public class DynamicArray<T> {
     }
 
     public void resize(int newSize) {
-        if (newSize < 1) {
+        if (newSize < 0) {
             throw new RuntimeException(negativeArraySizeError);
         }
 
